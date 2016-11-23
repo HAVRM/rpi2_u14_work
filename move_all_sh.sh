@@ -36,7 +36,7 @@ fi
 rm -rf ~/rpi2_u14_work/shell_script
 FNAME=(`find ./ -name "*.sh"`)
 make_sh
-. ~/rm_~_file.sh
+. rm_~_file.sh
 for arg in ${FNAME[@]}
 do
 	if [ `echo ${arg} | grep -i "catkin_ws"` ]
