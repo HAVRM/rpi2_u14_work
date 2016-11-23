@@ -7,32 +7,27 @@ then
 	if [ $1 = "-h" ]
 	then
 		echo "自分のgithubに関連することのコントロール"
-		echo ". sub_git.sh (pull)"
+		echo ". github_ctrl.sh (pull)"
 		return 0
 	fi
 fi
 COM=$1
 NCOM=$#
 DATA=`date '+%m%d_%H%M_%S'`
-. sub_move.sh *** *** *** *** *** *** ***
+. move_all_sh.sh *** *** *** *** *** ***
 cd ~/rpi2_u14_work
 if [ ${NCOM} = 1 ]
 then
 	if [ ${COM} = "pull" ]
 	then
-		cp sub_git.sh ~/sub_git.sh
-		cp sub_move.sh ~/sub_move.sh
 		git fetch rpi2_u14_work
 		git merge rpi2_u14_work/master
-		mv ~/sub_git.sh sub_git.sh
-		mv ~/sub_move.sh sub_move.sh
+		echo ${PASS} | sudo -S cp -rf apache_html /var/www/html
+		cp -rf auto_pdf/auto_get_pdf.sh ~/auto_pdf/auto_get_pdf.sh
 		return 0
 	fi
 fi
-git add -A apache_html
-git add -A auto_pdf
-git add -A shell_script
-git add -A .gitignore
+git add -A
 git commit -m "${DATA}"
 git push rpi2_u14_work master
 cd $PLACE
