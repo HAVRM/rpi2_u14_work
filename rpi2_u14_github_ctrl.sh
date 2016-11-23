@@ -15,5 +15,5 @@ DATA=`date '+%m%d_%H%M_%S'`
 cd ~/rpi2_u14_work
 git add -A
 git commit -m "${DATA}"
-git push work master
+git push rpi2_u14_work master
 cd $PLACE
