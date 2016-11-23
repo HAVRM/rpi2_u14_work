@@ -33,41 +33,62 @@ then
 		return 0
 	fi
 fi
-rm -rf ~/rpi2_u14_work/shell_script
+rm -rf ~/work/shell_script
 FNAME=(`find ./ -name "*.sh"`)
 make_sh
-. ~/rm_~_file.sh
+. rm_~_file.sh
 for arg in ${FNAME[@]}
 do
 	if [ `echo ${arg} | grep -i "catkin_ws"` ]
 	then
 		:
+	elif [ `echo ${arg} | grep -i "mylog"` ]
+	then
+		:
 	elif [ `echo ${arg} | grep -i "opencv_dir"` ]
 	then
 		:
-	elif [ `echo ${arg} | grep -i "rpi2_u14_work/shell_script"` ]
+	elif [ `echo ${arg} | grep -i "work/shell_script"` ]
 	then
 		:
 	elif [ `echo ${arg} | grep -i "Trash"` ]
 	then
 		:
+	elif [ `echo ${arg} | grep -i "set_ros"` ]
+	then
+		:
+	elif [ `echo ${arg} | grep -i "gigabyte"` ]
+	then
+		:
+	elif [ `echo ${arg} | grep -i "robocon"` ]
+	then
+		:
+	elif [ `echo ${arg} | grep -i "pepper_ws"` ]
+	then
+		:
 	elif [ `echo ${arg} | grep -i "gcc4mbed"` ]
 	then
 		:
+	elif [ `echo ${arg} | grep -i "siggraph2016_colorization"` ]
+	then
+		:
 	elif [ `echo ${arg} | grep -i "torch"` ]
+	then
+		:
+	elif [ `echo ${arg} | grep -i "rpi2_u14_work"` ]
 	then
 		:
 	else
 		arg2=${arg#*/}
 		if [ ${arg2} = ${arg2%/*} ]
 		then
-			mkdir -p ~/rpi2_u14_work/shell_script/home
-			cp ${arg2} ~/rpi2_u14_work/shell_script/home/${arg2}
-			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/home/${arg2}
+			mkdir -p ~/work/shell_script/home
+			cp ${arg2} ~/work/shell_script/home/${arg2}
+			. .move_all_sh_sub.sh ~/work/shell_script/home/${arg2}
 		else
-			mkdir -p ~/rpi2_u14_work/shell_script/${arg2%/*}
-			cp ${arg2} ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}
-			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}
+			mkdir -p ~/work/shell_script/${arg2%/*}
+			cp ${arg2} ~/work/shell_script/${arg2%/*}/${arg##*/}
+			. .move_all_sh_sub.sh ~/work/shell_script/${arg2%/*}/${arg##*/}
 		fi
 	fi
 done
