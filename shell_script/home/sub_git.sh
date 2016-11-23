@@ -25,8 +25,9 @@ then
 		return 0
 	fi
 fi
-echo "!*.sh" >shell_script/.gitignore
-git add -A
+git add -A apache_html
+git add -A auto_pdf
+git add -A shell_script
 git commit -m "${DATA}"
 git push rpi2_u14_work master
 cd $PLACE
