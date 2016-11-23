@@ -28,6 +28,7 @@ fi
 git add -A apache_html
 git add -A auto_pdf
 git add -A shell_script
+git add -A .gitignore
 git commit -m "${DATA}"
 git push rpi2_u14_work master
 cd $PLACE
