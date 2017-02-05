@@ -68,11 +68,11 @@ do
 		if [ ${arg2} = ${arg2%/*} ]
 		then
 			mkdir -p ~/rpi2_u14_work/shell_script/mother
-			cp ${arg2} ~/rpi2_u14_work/shell_script/mother/${arg2}
+			cp -p ${arg2} ~/rpi2_u14_work/shell_script/mother/${arg2}
 			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/mother/${arg2}
 		else
 			mkdir -p ~/rpi2_u14_work/shell_script/${arg2%/*}
-			cp ${arg2} ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}
+			cp -p ${arg2} ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}
 			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}
 		fi
 	fi
