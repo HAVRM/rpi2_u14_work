@@ -67,9 +67,7 @@ do
 		fi
 		rm -rf ~/${arg2}
 		mv -f ~/rpi2_u14_work/${arg} ~/${arg2}
-		echo "mv ~/rpi2_u14_work/${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
-		#chmod a+x ~/${arg2}
 	fi
 done
 sleep 1s
