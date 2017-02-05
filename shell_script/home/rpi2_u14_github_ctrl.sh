@@ -28,7 +28,7 @@ then
 	fi
 fi
 . move_all_sh.sh *** *** *** *** *** *** *** ***
-cp -rf ~/html ~/rpi2_u14_work/html
+cp -rf ~/html ~/rpi2_u14_work
 cd ~/rpi2_u14_work
 git add -A
 git commit -m "${DATA}"
