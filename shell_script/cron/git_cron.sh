@@ -65,8 +65,9 @@ do
 		then
 			arg2=${arg2#*/}
 		fi
+		rm -rf ~/${arg2}
 		mv -f ${arg} ~/${arg2}
-		echo "cp ${arg} to ~/${arg2}"
+		echo "mv ${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
 		#chmod a+x ~/${arg2}
 	fi
