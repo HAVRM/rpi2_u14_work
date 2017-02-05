@@ -22,8 +22,7 @@ then
 	then
 		git fetch rpi2_u14_work
 		git merge rpi2_u14_work/master
-		echo ${PASS} | sudo -S cp -rf apache_html /var/www/html
-		cp -rf auto_pdf/auto_get_pdf.sh ~/auto_pdf/auto_get_pdf.sh
+		cd $PLACE
 		return 0
 	fi
 fi
