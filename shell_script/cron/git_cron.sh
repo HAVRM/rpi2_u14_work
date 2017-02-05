@@ -66,12 +66,13 @@ do
 			arg2=${arg2#*/}
 		fi
 		rm -rf ~/${arg2}
-		mv -f ${arg} ~/${arg2}
-		echo "mv ${arg} to ~/${arg2}"
+		mv -f ~/rpi2_u14_work/${arg} ~/${arg2}
+		echo "mv ~/rpi2_u14_work/${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
 		#chmod a+x ~/${arg2}
 	fi
 done
+sleep 1s
 git add -A
 git commit -m "done copy at ${DATE}"
 git push rpi2_u14_work mother
