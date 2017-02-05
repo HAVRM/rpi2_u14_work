@@ -60,7 +60,7 @@ do
 	elif [ `echo ${arg} | grep -i "gitignore"` ]
 	then
 		:
-	elif [ `echo ${arg} | grep -i ".git"` ]
+	elif [ `echo ${arg} | grep -i "/.git/"` ]
 	then
 		:
 	else
