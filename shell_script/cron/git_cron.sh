@@ -39,7 +39,7 @@ do
 	fi
 	I=`expr $I + 1`
 done
-if [ BCH = "master" ]
+if [ ${BCH} = "master" ]
 then
 	cd ~
 	. rpi2_u14_github_ctrl.sh
@@ -69,9 +69,9 @@ do
 		sed -i -e "s/***/***/g" ~/${arg2}
 	fi
 done
-rm -rf shellscript
+rm -rf shell_script
 git add -A
-git commit -m "done copy at %{DATE}"
+git commit -m "done copy at ${DATE}"
 git push rpi2_u14_work mother
 git checkout master
 cd $PLACEgit_cron
