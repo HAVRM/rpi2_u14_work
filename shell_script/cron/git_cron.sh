@@ -48,7 +48,7 @@ fi
 git fetch rpi2_u14_work
 git checkout mother
 git merge rpi2_u14_work/mother
-FNAME=(`find ./ -name "*.*"`)
+FNAME=(`find ./ -name "*.*" -type f`)
 for arg in ${FNAME[@]}
 do
 	if [ `echo ${arg} | grep -i ".git"` ]
