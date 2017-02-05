@@ -44,9 +44,9 @@ then
 	cd ~
 	. rpi2_u14_github_ctrl.sh
 	cd ~/rpi2_u14_work
+	git checkout mother
 fi
 git fetch rpi2_u14_work
-git checkout mother
 git merge rpi2_u14_work/mother
 FNAME=(`find ./ -name "*.*" -type f`)
 for arg in ${FNAME[@]}
@@ -65,7 +65,7 @@ do
 		then
 			arg2=${arg2#*/}
 		fi
-		mv -f ${arg} ~/${arg2}
+		mv -f -p ${arg} ~/${arg2}
 		echo "cp ${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
 	fi
