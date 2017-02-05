@@ -68,7 +68,7 @@ do
 		mv -f ${arg} ~/${arg2}
 		echo "cp ${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
-		chmod a+x ~/${arg2}
+		#chmod a+x ~/${arg2}
 	fi
 done
 git add -A
