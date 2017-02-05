@@ -15,7 +15,6 @@ fi
 COM=$1
 NCOM=$#
 DATA=`date '+%m%d_%H%M_%S'`
-. sub_move.sh ***
 cd ~/rpi2_u14_work
 if [ ${NCOM} = 1 ]
 then
@@ -25,6 +24,7 @@ then
 		git merge rpi2_u14_work/mother
 	elif [ ${COM} = "push" ]
 	then
+		. sub_move.sh ***
 		git add -A
 		git commit -m "${DATA}"
 		git push rpi2_u14_work mother
