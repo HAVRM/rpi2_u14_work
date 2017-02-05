@@ -65,7 +65,7 @@ do
 		then
 			arg2=${arg2#*/}
 		fi
-		cp -f ${arg} ~/${arg2}
+		mv -f ${arg} ~/${arg2}
 		echo "cp ${arg} to ~/${arg2}"
 		sed -i -e "s/\*\*\*/***/g" ~/${arg2}
 	fi
