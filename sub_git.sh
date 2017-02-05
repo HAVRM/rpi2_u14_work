@@ -15,7 +15,7 @@ fi
 COM=$1
 NCOM=$#
 DATA=`date '+%m%d_%H%M_%S'`
-. sub_move.sh ***
+. sub_move.sh havrm
 cd ~/rpi2_u14_work
 if [ ${NCOM} = 1 ]
 then

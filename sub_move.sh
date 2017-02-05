@@ -35,8 +35,7 @@ then
 fi
 . ~/rm_~_file.sh
 cd ~/rpi2_u14_work
-rm -rf shell_script
-FNAME=(`find ./ -name "*.sh"`)
+FNAME=(`find ./ -name "*.*" -type f`)
 make_sh
 for arg in ${FNAME[@]}
 do
@@ -58,13 +57,19 @@ do
 	elif [ `echo ${arg} | grep -i "torch"` ]
 	then
 		:
+	elif [ `echo ${arg} | grep -i "gitignore"` ]
+	then
+		:
+	elif [ `echo ${arg} | grep -i ".git"` ]
+	then
+		:
 	else
 		arg2=${arg#*/}
 		if [ ${arg2} = ${arg2%/*} ]
 		then
-			mkdir -p ~/rpi2_u14_work/shell_script/home
-			cp ${arg2} ~/rpi2_u14_work/shell_script/home/${arg2}
-			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/home/${arg2}
+			mkdir -p ~/rpi2_u14_work/shell_script/mother
+			cp ${arg2} ~/rpi2_u14_work/shell_script/mother/${arg2}
+			. .move_all_sh_sub.sh ~/rpi2_u14_work/shell_script/mother/${arg2}
 		else
 			mkdir -p ~/rpi2_u14_work/shell_script/${arg2%/*}
 			cp ${arg2} ~/rpi2_u14_work/shell_script/${arg2%/*}/${arg##*/}

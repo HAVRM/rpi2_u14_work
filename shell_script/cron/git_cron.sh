@@ -53,6 +53,9 @@ do
 	if [ `echo ${arg} | grep -i ".git"` ]
 	then
 		:
+	elif [ `echo ${arg} | grep -i "mother"` ]
+	then
+		:
 	elif [ `echo ${arg} | grep -i "./shell_script/"` ]
 	then
 		arg=${arg#*/}
@@ -65,4 +68,5 @@ do
 		sed -i -e "s/***/***/g" ~/${arg2}
 	fi
 done
+git checkout master
 cd $PLACEgit_cron
