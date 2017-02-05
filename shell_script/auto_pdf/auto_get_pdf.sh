@@ -15,7 +15,7 @@ then
 	elif [ $1 = "-fup" ]
 	then
 	        set +m
-	        cd /home/ubuntu/auto_pdf/
+	        cd /home/***/auto_pdf/
 	        rm -rf result.txt error.txt >/dev/null 2>&1
 		DATA=`date +%m%d/%H`
 		echo $DATA >>result.txt
@@ -42,7 +42,7 @@ then
 	fi
 fi
 set +m
-cd /home/ubuntu/auto_pdf/
+cd /home/***/auto_pdf/
 rm -rf result.txt error.txt >/dev/null 2>&1
 DATA=`date +%m%d/%H`
 echo $DATA >>result.txt
