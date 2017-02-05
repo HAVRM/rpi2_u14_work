@@ -13,6 +13,9 @@ fi
 COM=$1
 NCOM=$#
 DATA=`date '+%m%d_%H%M_%S'`
+cd ~/rpi2_u14_work
+git checkout master
+cd ~
 if [ ${NCOM} = 1 ]
 then
 	if [ ${COM} = "pull" ]
