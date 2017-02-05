@@ -76,5 +76,5 @@ sleep 1s
 git add -A
 git commit -m "done copy at ${DATE}"
 git push rpi2_u14_work mother
-#git checkout master
+git checkout master
 cd $PLACEgit_cron
