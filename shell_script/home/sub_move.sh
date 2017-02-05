@@ -33,10 +33,11 @@ then
 		return 0
 	fi
 fi
-rm -rf ~/rpi2_u14_work/shell_script
+. ~/rm_~_file.sh
+cd ~/rpi2_u14_work
+rm -rf shell_script
 FNAME=(`find ./ -name "*.sh"`)
 make_sh
-. rm_~_file.sh
 for arg in ${FNAME[@]}
 do
 	if [ `echo ${arg} | grep -i "catkin_ws"` ]
@@ -45,7 +46,7 @@ do
 	elif [ `echo ${arg} | grep -i "opencv_dir"` ]
 	then
 		:
-	elif [ `echo ${arg} | grep -i "rpi2_u14_work/shell_script"` ]
+	elif [ `echo ${arg} | grep -i "shell_script"` ]
 	then
 		:
 	elif [ `echo ${arg} | grep -i "Trash"` ]

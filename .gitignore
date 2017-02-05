@@ -1,7 +1,1 @@
-*.pdf
 /*.sh
-sub_git.sh
-sub_move.sh
-.dropbox_uplaoder
-html/file
-!.gitkeep
