@@ -64,11 +64,11 @@ function loadFile(fileName){
          for (var i=0; i<2; i++){
            memChart.segments[i].value=parseInt(txtdata[i+1],10);
          }
-         document.getElementById("thermal").innerHTML=txtdata[2];
+         memChart.update();
+         document.getElementById("thermal").innerHTML=txtdata[3];
          for (var i=0; i<3; i++){
            cpuChart.segments[i].value=parseInt(txtdata[i+4],10);
          }
-         memChart.update();
          cpuChart.update();
       }
    }
