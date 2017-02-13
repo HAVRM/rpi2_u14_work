@@ -4,8 +4,8 @@ echo "Content-Type: text/html"
 echo ""
 #DATA=`date '+%m%d_%H%M_%S'`
 MEM=`cat /proc/meminfo | tr -s ' '`
-#MEM=`echo "${MEM}" | sed 's/\ kB/\ kB\<br\>/g'`
-#echo "<html><body>${DATA}<br>${MEM}</body></html>"
+MEM=`echo "${MEM}" | sed 's/\ kB/\ kB\<br\>/g'`
+echo "<html><body>${DATA}<br>${MEM}</body></html>"
 #MEM=(`cat /proc/meminfo | tr -s ' '`)
 I=0
 SUBI=1
@@ -40,4 +40,4 @@ MFR=${MEM[4]}
 #	MTT=`expr ${MTT} - 1`
 #	MFR=`expr ${MFR} + 1`
 #fi
-echo "<html><body>${MTT}_${MFR}</body></html>"
+echo "<html><body>${MTT}${MFR}</body></html>"
