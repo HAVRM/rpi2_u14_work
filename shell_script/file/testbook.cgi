@@ -2,7 +2,7 @@
 
 echo "Content-Type: text/html"
 echo ""
-DATA=`echo "havrm" | sudo -S sh cutbook.cgi`
+DATA=`echo "***" | sudo -S sh cutbook.cgi`
 #mkdir temp_kusen_01
 #cp kusen_01.pdf temp_kusen_01/kusen_01.pdf
 #cd temp_kusen_01
