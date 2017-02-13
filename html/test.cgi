@@ -35,4 +35,4 @@ then
 	MTT=`expr ${MTT} - 1`
 	MFR=`expr ${MFR} + 1`
 fi
-echo "${MTT}/${MFR}"
+echo "<html><body>${MTT}/${MFR}</body></html>"
