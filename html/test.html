@@ -51,7 +51,7 @@ function loadFile(fileName){
          //document.getElementById("text1").innerHTML=txtdata;
          txtdata=httpObj.responseText.split("/");
          for (var i=0; i<2; i++){
-           myChart.segments[i].value=parseInt(txtdata[i],10);
+           myChart.segments[i].value=parseInt(txtdata[i+1],10);
          }
          myChart.update();
       }

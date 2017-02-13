@@ -40,11 +40,9 @@ echo ""
 #	MTT=`expr ${MTT} - 1`
 #	MFR=`expr ${MFR} + 1`
 #fi
-echo "<html><body>"
 total=$(free -m | awk '/Mem:/{print $2;}')
 free=$(free -m | awk '/-\/+/{print $4;}')
 total=`expr $total - $free`
 #free=${free}00
 #echo `expr $free / $total`
-echo ${total}/${free}
-echo "</body></html>"
+echo "<html><body>/${total}/${free}/</body></html>"
