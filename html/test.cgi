@@ -3,14 +3,14 @@
 echo "Content-Type: text/html"
 echo ""
 #DATA=`date '+%m%d_%H%M_%S'`
-#MEM=`cat /proc/meminfo | tr -s ' '`
+MEM=`cat /proc/meminfo | tr -s ' '`
 #MEM=`echo "${MEM}" | sed 's/\ kB/\ kB\<br\>/g'`
 #echo "<html><body>${DATA}<br>${MEM}</body></html>"
-MEM=(`cat /proc/meminfo | tr -s ' '`)
+#MEM=(`cat /proc/meminfo | tr -s ' '`)
 I=0
 SUBI=1
-#MTT=0
-#MFR=0
+MTT=0
+MFR=0
 MTT=${MEM[1]}
 MFR=${MEM[4]}
 #for arg in ${MEM[@]}
