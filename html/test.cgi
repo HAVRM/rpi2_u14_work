@@ -4,6 +4,6 @@ echo "Content-Type: text/html"
 echo ""
 DATA=`date '+%m%d_%H%M_%S'`
 MEM=`cat /proc/meminfo | tr -s ' '`
-MEM=`echo -e "${MEM}" | sed 's/\ kB/\ kB\<br\>/g'`
+MEM=`echo "${MEM}" | sed 's/\ kB/\ kB\<br\>\<br\>/g'`
 echo "<html><body>${DATA}<br>${MEM}</body></html>"
 
