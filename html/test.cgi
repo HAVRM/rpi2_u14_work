@@ -43,6 +43,8 @@ echo ""
 echo "<html><body>"
 total=$(free -m | awk '/Mem:/{print $2;}')
 free=$(free -m | awk '/-\/+/{print $4;}')
-free=${free}00
-echo `expr $free / $total`
+total=`expr $total - $free`
+#free=${free}00
+#echo `expr $free / $total`
+echo ${total}/${free}
 echo "</body></html>"
