@@ -1,7 +1,7 @@
 #!/bin/sh -xv
 
-echo "Content-Type: text/html"
-echo ""
+#echo "Content-Type: text/html"
+#echo ""
 PLACEcutbook=`pwd`
 if [ $# != 0 ]
 then
