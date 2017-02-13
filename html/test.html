@@ -34,7 +34,7 @@ var data = [
  }
 ];
  
-var myChart = new Chart(document.getElementById("mycanvas").getContext("2d")).Doughnut(data);
+var myChart = new Chart(document.getElementById("mycanvas").getContext("2d")).Doughnut(data,{animation:false});
 
 function loadFile(fileName){
    httpObj = new XMLHttpRequest();
@@ -58,7 +58,7 @@ function loadFile(fileName){
    }
 }
 
-//setInterval("loadFile('test.cgi')",1000);
+setInterval("loadFile('test.cgi')",1000);
 </script>
 
 <!--<input type="button" value="ファイル読み込み" 
