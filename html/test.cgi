@@ -16,9 +16,11 @@ do
 	if [ ${arg} = "MemTotal:" ]
 	then
 		MTT=${MEM[$SUBI]}
+		MTT=`expr ${MTT} / 100000`
 	elif [ ${arg} = "MemFree:" ]
 	then
 		MFR=${MEM[$SUBI]}
+		MFR=`expr ${MFR} / 100000`
 	fi
 	I=`expr ${I} + 1`
 	SUBI=`expr ${SUBI} + 1`
