@@ -44,16 +44,16 @@ function loadFile(fileName){
    var memdata=[];
    httpObj.onreadystatechange = function(){
       if ( (httpObj.readyState == 4) && (httpObj.status == 200) ){
-         txtdata="<html>";
-         txtdata+=httpObj.responseText;
+         //txtdata="<html>";
+         //txtdata+=httpObj.responseText;
          //document.getElementById("text1").value=httpObj.responseText;
-         txtdata+="</html>";
-         document.getElementById("text1").innerHTML=txtdata;
-         //txtdata=httpObj.responseText.split("/");
-         //for (var i=0; i<2; i++){
-         //  myChart.segments[i].value=parseInt(txtdata[i],10);
-         //}
-         //myChart.update();
+         //txtdata+="</html>";
+         //document.getElementById("text1").innerHTML=txtdata;
+         txtdata=httpObj.responseText.split("/");
+         for (var i=0; i<2; i++){
+           myChart.segments[i].value=parseInt(txtdata[i],10);
+         }
+         myChart.update();
       }
    }
 }
