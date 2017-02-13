@@ -40,4 +40,4 @@ MFR=${MEM[4]}
 #	MTT=`expr ${MTT} - 1`
 #	MFR=`expr ${MFR} + 1`
 #fi
-echo "<html><body>${MTT}/${MFR}</body></html>"
+echo "<html><body>${MTT}_${MFR}</body></html>"
