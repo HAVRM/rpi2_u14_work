@@ -11,25 +11,51 @@
  </body>
 </html>-->
 <html>
-<!--<head><title>サーバー上のテキストファイルを読み込む</title>
-</head>-->
+ <head>
+  <title>メモリーチェック</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+ </head>
 <body>
-<script type="text/javascript">
+ <canvas id="mycanvas" height="600" width="400"></canvas>
+ <script type="text/javascript">
 function loadFile(fileName){
    httpObj = new XMLHttpRequest();
    httpObj.open('GET',fileName+"?"+(new Date()).getTime(),true);
    // ?以降はキャッシュされたファイルではなく、毎回読み込むためのもの
    httpObj.send(null);
+   var memdata=[];
    httpObj.onreadystatechange = function(){
       if ( (httpObj.readyState == 4) && (httpObj.status == 200) ){
-         txtdata="<html>";
-         txtdata+=httpObj.responseText;
+         //txtdata="<html>";
+         //txtdata+=httpObj.responseText;
          //document.getElementById("text1").value=httpObj.responseText;
-         txtdata+="</html>";
-         document.getElementById("text1").innerHTML=txtdata;
+         //txtdata+="</html>";
+         //document.getElementById("text1").innerHTML=txtdata;
+         txtdata=httpObj.responseText.split("/");
+         for (var i=0; i<2; i++)
+           myChart.segments[i].value=(parseInt(txtdata[i],10);
+         }
+         myChart.update();
       }
    }
 }
+
+var data = [
+ {
+  value: 300,
+  color:"#F7464A",
+  highlight: "#FF5A5E",
+  label: "Red"
+ },
+ {
+  value: 50,
+  color: "#46BFBD",
+  highlight: "#5AD3D1",
+  label: "Green"
+ },
+];
+ 
+var myChart = new Chart(document.getElementById("mycanvas").getContext("2d")).Doughnut(data);
 
 setInterval("loadFile('test.cgi')",1000);
 </script>
