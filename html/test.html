@@ -18,6 +18,24 @@
 <body>
  <canvas id="mycanvas" height="600" width="400"></canvas>
  <script type="text/javascript">
+
+var data = [
+ {
+  value: 300,
+  color:"#F7464A",
+  highlight: "#FF5A5E",
+  label: "Red"
+ },
+ {
+  value: 50,
+  color: "#46BFBD",
+  highlight: "#5AD3D1",
+  label: "Green"
+ }
+];
+ 
+var myChart = new Chart(document.getElementById("mycanvas").getContext("2d")).Doughnut(data);
+
 function loadFile(fileName){
    httpObj = new XMLHttpRequest();
    httpObj.open('GET',fileName+"?"+(new Date()).getTime(),true);
@@ -32,30 +50,13 @@ function loadFile(fileName){
          //txtdata+="</html>";
          //document.getElementById("text1").innerHTML=txtdata;
          txtdata=httpObj.responseText.split("/");
-         for (var i=0; i<2; i++)
-           myChart.segments[i].value=(parseInt(txtdata[i],10);
+         for (var i=0; i<2; i++){
+           myChart.segments[i].value=parseInt(txtdata[i],10);
          }
          myChart.update();
       }
    }
 }
-
-var data = [
- {
-  value: 300,
-  color:"#F7464A",
-  highlight: "#FF5A5E",
-  label: "Red"
- },
- {
-  value: 50,
-  color: "#46BFBD",
-  highlight: "#5AD3D1",
-  label: "Green"
- },
-];
- 
-var myChart = new Chart(document.getElementById("mycanvas").getContext("2d")).Doughnut(data);
 
 //setInterval("loadFile('test.cgi')",1000);
 </script>
