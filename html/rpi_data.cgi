@@ -9,5 +9,8 @@ temp=`cat /sys/class/thermal/thermal_zone0/temp`
 temp1=`expr $temp / 1000`
 temp=`expr $temp % 1000`
 temp="${temp1}.${temp}"
-cpu=`vmstat | awk 'NR==3 {print $11"/"$13"/"$14"/"$15"/"$16}'` #in,us,sy,id,wa
-echo "<html><body>/${total}/${free}/${temp}/${cpu}</body></html>"
+intr=`vmstat | awk 'NR==3 {print $11}'` #in
+cpu=`top -b -n 1 | awk 'NR==3 {print $2"/"$4"/"$6"/"$8}'` #us,sy,id,wa
+cpu=`echo ${cpu} | sed -e 's/0\.//g'`
+cpu=`echo ${cpu} | sed -e 's/\.//g'`
+echo "<html><body>/${total}/${free}/${temp}/${intr}/${cpu}</body></html>"

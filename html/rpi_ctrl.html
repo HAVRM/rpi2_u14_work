@@ -67,14 +67,14 @@ function loadFile(fileName){
          memChart.update();
          document.getElementById("thermal").innerHTML=txtdata[3];
          for (var i=0; i<3; i++){
-           cpuChart.segments[i].value=parseInt(txtdata[i+4],10);
+           cpuChart.segments[i].value=parseInt(txtdata[i+5],10);
          }
          cpuChart.update();
       }
    }
 }
 
-setInterval("loadFile('rpi_data.cgi')",1000);
+setInterval("loadFile('rpi_data.cgi')",500);
 
 </script>
 
