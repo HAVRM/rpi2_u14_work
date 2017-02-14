@@ -24,6 +24,8 @@ then
 		git merge rpi2_u14_work/mother
 	elif [ ${COM} = "push" ]
 	then
+		git fetch rpi2_u14_work
+		git merge rpi2_u14_work/mother
 		. sub_move.sh ***
 		git add -A
 		git commit -m "${DATA}"
