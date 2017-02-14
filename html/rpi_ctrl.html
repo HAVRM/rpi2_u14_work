@@ -4,15 +4,21 @@
   <title>メモリーチェック</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
  </head>
-<body>
-<br>　　　　　cpu<br>
-<canvas id="cpu" height="200" width="200"></canvas>
-<br><br>　　　　memory<br>
-<canvas id="memory" height="200" width="200"></canvas>
-<br><br>thermal [℃]<br>
-<div id="thermal"></div>
+ <body>
+ <br>　　　　　cpu<br>
+ <canvas id="cpu" height="200" width="200"></canvas>
+ <div id="cpudata"></div>
+ <br><br>　　　　memory<br>
+ <canvas id="memory" height="200" width="200"></canvas>
+ <div id="memdata"></div>
+ <br><br>thermal [℃]<br>
+ <progress id="thermalbar" value="0" max=100></progress>
+ <div id="thermal"></div>
+ 
  <script type="text/javascript">
 
+document.getElementById("cpudata").innerHTML="<br>user,sys,nice,idle,(*10%)<br>0000,0000,0000,0000,"
+document.getElementById("memdata").innerHTML="<br>used,free,(MB)<br>0000,0000,"
 document.getElementById("thermal").innerHTML="0.000"
 var meminitdata = [
  {
@@ -39,8 +45,14 @@ var cpuinitdata = [
  {
   value: 10,
   color:"#FFD700",
-  highlight: "#FFFF00",
+  highlight: "#FFE700",
   label: "system Used"
+ },
+ {
+  value: 10,
+  color:"#00CCFF",
+  highlight: "#00DDFF",
+  label: "nice Used"
  },
  {
   value: 10,
@@ -65,17 +77,26 @@ function loadFile(fileName){
            memChart.segments[i].value=parseInt(txtdata[i+1],10);
          }
          memChart.update();
-         document.getElementById("thermal").innerHTML=txtdata[3];
-         for (var i=0; i<3; i++){
+         for (var i=0; i<4; i++){
            cpuChart.segments[i].value=parseInt(txtdata[i+5],10);
          }
          cpuChart.update();
+         document.getElementById("thermal").innerHTML=txtdata[3];
+         document.getElementById("thermalbar").value=parseInt(txtdata[3],10);
+         document.getElementById("cpudata").innerHTML="<br>user,sys,nice,idle,(*10%)<br>";
+         for (var i=0;i<4;i++){
+           document.getElementById("cpudata").innerHTML+=('0000'+txtdata[i+5]).slice(-4)+',';
+         }
+         document.getElementById("memdata").innerHTML="<br>used,free,(MB)<br>";
+         for (var i=0;i<2;i++){
+           document.getElementById("memdata").innerHTML+=('0000'+txtdata[i+1]).slice(-4)+',';
+         }
       }
    }
 }
 
 setInterval("loadFile('rpi_data.cgi')",500);
-
+//setInterval("loadFile('rpi_data.txt')",500);
 </script>
 
 <!--<input type="button" value="ファイル読み込み" 
