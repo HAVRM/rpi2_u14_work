@@ -1,7 +1,7 @@
 #!/bin/sh -xv
 
-#echo "Content-Type: text/html"
-#echo ""
+echo "Content-Type: text/html"
+echo ""
 total=$(free -m | awk '/Mem:/{print $2;}')
 free=$(free -m | awk '/-\/+/{print $4;}')
 total=`expr $total - $free`
