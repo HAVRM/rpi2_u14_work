@@ -188,7 +188,7 @@ function loadFile(fileName){
          for(var i=0;i<11;i++)for(var k=0;k<2;k++){
            if(netmax<netChart.data.datasets[k].data[i])netmax=netChart.data.datasets[k].data[i];
          }
-         netmax=Math.ceil(netmax/10.0);
+         netmax=(Math.ceil(netmax/10.0))*10;
          netChart.option.scales.yAxes.ticks.max=netmax;
          netChart.update();
          sysChart.update();
