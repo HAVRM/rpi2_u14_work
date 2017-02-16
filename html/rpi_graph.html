@@ -77,6 +77,16 @@ var netinitdata = {
    pointBackgroundColor:"#FFE700",
    lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0]
+  },
+  {
+   label:"",
+   fill:false,
+   backgroundColor:"rgba(0,0,0,0)",
+   borderColor:"rgba(0,0,0,0)",
+   pointBorderColor:"rgba(0,0,0,0)",
+   pointBackgroundColor:"rgba(0,0,0,0)",
+   lineTension:0,
+   data:[0,0,0,0,0,0,0,0,0,0,0]
   }
  ]
 };
@@ -89,7 +99,8 @@ var sysoption={
    ticks:{
     max:100,
     min:0,
-    stepSize:10
+    stepSize:10,
+    beginAtZero:true
    }
   }]
  }
@@ -100,8 +111,8 @@ var netoption={
  scales:{
   yAxes:[{
    ticks:{
-    max:1,
-    min:0
+    min:0,
+    beginAtZero:true
    }
   }]
  }
@@ -189,13 +200,8 @@ function loadFile(fileName){
            if(netmax<netChart.data.datasets[k].data[i])netmax=netChart.data.datasets[k].data[i];
          }
          netmax=(Math.ceil(netmax/10.0))*10;
-         //netChart.option.scales.yAxes.ticks.max=netmax;
+         netChart.data.datasets[2].data[10]=netmax;
          netChart.update();
-         netChart.scaleService.updateScaleDefaults('linear', {
-          ticks: {
-           max:netmax
-          }
-         });
          sysChart.update();
          document.getElementById("time").innerHTML=txtdata[10];
          var txnum=Math.floor((txtdata[12].length-1)/3);
