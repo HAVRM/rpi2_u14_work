@@ -186,8 +186,8 @@ function loadFile(fileName){
          netChart.update();
          sysChart.update();
          document.getElementById("time").innerHTML=txtdata[10];
-         var txnum=Math.floor((txtdata[12].length+1)/3);
-         var rxnum=Math.floor((txtdata[13].length+1)/3);
+         var txnum=Math.floor((txtdata[12].length-1)/3);
+         var rxnum=Math.floor((txtdata[13].length-1)/3);
          if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
          else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"&nbsp;kB";
          else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"&nbsp;MB";
