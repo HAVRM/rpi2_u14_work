@@ -21,6 +21,7 @@ var sysinitdata = {
   {
    label:"cpu user used %",
    fill:false,
+   backgroundColor:"#FF5A5E",
    borderColor:"#F7464A",
    pointBorderColor:"#F7464A",
    pointBackgroundColor:"#FF5A5E",
@@ -30,6 +31,7 @@ var sysinitdata = {
   {
    label:"cpu system used %",
    fill:false,
+   backgroundColor:"#FFE700",
    borderColor:"#FFD700",
    pointBorderColor:"#FFD700",
    pointBackgroundColor:"#FFE700",
@@ -39,6 +41,7 @@ var sysinitdata = {
   {
    label:"cpu nice used %",
    fill:false,
+   backgroundColor:"#00DDFF",
    borderColor:"#00CCFF",
    pointBorderColor:"#00CCFF",
    pointBackgroundColor:"#00DDFF",
@@ -48,6 +51,7 @@ var sysinitdata = {
   {
    label:"memory used %",
    fill:false,
+   backgroundColor:"#BBEE00",
    borderColor:"#AADD00",
    pointBorderColor:"#AADD00",
    pointBackgroundColor:"#BBEE00",
@@ -63,6 +67,7 @@ var netinitdata = {
   {
    label:"wlan0 net TX kB",
    fill:false,
+   backgroundColor:"#FF5A5E",
    borderColor:"#F7464A",
    pointBorderColor:"#F7464A",
    pointBackgroundColor:"#FF5A5E",
@@ -72,6 +77,7 @@ var netinitdata = {
   {
    label:"wlan0 net RX kB",
    fill:false,
+   backgroundColor:"#FFE700",
    borderColor:"#FFD700",
    pointBorderColor:"#FFD700",
    pointBackgroundColor:"#FFE700",
@@ -220,10 +226,10 @@ function loadFile(fileName){
 }
 
 
-initdate('rpi_data.cgi');
-setInterval("loadFile('rpi_data.cgi')",500);
-//initdate('rpi_data.txt');
-//setInterval("loadFile('rpi_data.txt')",500);
+//initdate('rpi_data.cgi');
+//setInterval("loadFile('rpi_data.cgi')",500);
+initdate('rpi_data.txt');
+setInterval("loadFile('rpi_data.txt')",500);
   </script>
 
 <!--<input type="button" value="ファイル読み込み" 
