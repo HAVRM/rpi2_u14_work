@@ -15,4 +15,4 @@ data=`date +%N | cut -c -2`
 data=`date +%Y/%m/%d\&nbsp\;%H:%M:%S.`${data}
 time=`date +%s.%N`
 net=`cat /proc/net/dev | awk '/wlan0:/{print $10"_"$2}'`
-echo "<html><body>_${total}_${free}_${temp}_${intr}_${cpu}_${data}_${time}_${net}</body></html>"
+echo "<html><body>_${total}_${free}_${temp}_${intr}_${cpu}_${data}_${time}_${net}_</body></html>"

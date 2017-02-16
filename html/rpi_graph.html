@@ -134,7 +134,17 @@ function initdate(fileName){
          lasttx=parseInt(txtdata[12],10);
          lastrx=parseInt(txtdata[13],10);
          document.getElementById("time").innerHTML=txtdata[10];
-         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+"&nbsp;kB,<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13]+"&nbsp;kB";
+         var txnum=Math.floor((txtdata[12].length)/3);
+         var rxnum=Math.floor((txtdata[13].length)/3);
+         if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
+         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"&nbsp;kB";
+         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"&nbsp;MB";
+         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"&nbsp;GB";
+         if(rxnum==0)txtdata[13]=txtdata[13]+"&nbsp;B";
+         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"&nbsp;kB";
+         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"&nbsp;MB";
+         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"&nbsp;GB";
+         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13];
       }
    }
 }
@@ -176,16 +186,16 @@ function loadFile(fileName){
          netChart.update();
          sysChart.update();
          document.getElementById("time").innerHTML=txtdata[10];
-         var txnum=txtdata[12].length/3;
-         var rxnum=txtdata[13].length/3;
+         var txnum=Math.floor((txtdata[12].length)/3);
+         var rxnum=Math.floor((txtdata[13].length)/3);
          if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
-         else if(txnum==1)txtdata[12]=txtdata[12].slice(-3)+"&nbsp;kB";
-         else if(txnum==2)txtdata[12]=txtdata[12].slice(-6)+"&nbsp;MB";
-         else if(txnum>=3)txtdata[12]=txtdata[12].slice(-9)+"&nbsp;GB";
+         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"&nbsp;kB";
+         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"&nbsp;MB";
+         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"&nbsp;GB";
          if(rxnum==0)txtdata[13]=txtdata[13]+"&nbsp;B";
-         else if(rxnum==1)txtdata[13]=txtdata[13].slice(-3)+"&nbsp;kB";
-         else if(rxnum==2)txtdata[13]=txtdata[13].slice(-6)+"&nbsp;MB";
-         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(-9)+"&nbsp;GB";
+         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"&nbsp;kB";
+         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"&nbsp;MB";
+         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"&nbsp;GB";
          document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13];
       }
    }
@@ -194,7 +204,7 @@ function loadFile(fileName){
 
 initdate('rpi_data.cgi');
 setInterval("loadFile('rpi_data.cgi')",500);
-//initdate('rpi_data.cgi');
+//initdate('rpi_data.txt');
 //setInterval("loadFile('rpi_data.txt')",500);
   </script>
 
