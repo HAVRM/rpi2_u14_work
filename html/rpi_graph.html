@@ -213,13 +213,13 @@ function loadFile(fileName){
          var txnum=Math.floor((txtdata[12].length-1)/3);
          var rxnum=Math.floor((txtdata[13].length-1)/3);
          if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
-         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"&nbsp;kB";
-         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"&nbsp;MB";
-         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"&nbsp;GB";
+         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"."+txtdata[12].slice(-2,-0)+"&nbsp;kB";
+         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"."+txtdata[12].slice(-5,-3)+"&nbsp;MB";
+         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"."+txtdata[12].slice(-8,-6)+"&nbsp;GB";
          if(rxnum==0)txtdata[13]=txtdata[13]+"&nbsp;B";
-         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"&nbsp;kB";
-         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"&nbsp;MB";
-         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"&nbsp;GB";
+         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"."+txtdata[13].slice(-2,-0)+"&nbsp;kB";
+         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"."+txtdata[13].slice(-5,-3)+"&nbsp;MB";
+         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"."+txtdata[13].slice(-8,-6)+"&nbsp;GB";
          document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13];
       }
    }
