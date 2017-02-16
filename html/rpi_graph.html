@@ -24,7 +24,7 @@ var sysinitdata = {
    borderColor:"#F7464A",
    pointBorderColor:"#F7464A",
    pointBackgroundColor:"#FF5A5E",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
   {
@@ -33,7 +33,7 @@ var sysinitdata = {
    borderColor:"#FFD700",
    pointBorderColor:"#FFD700",
    pointBackgroundColor:"#FFE700",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
   {
@@ -42,7 +42,7 @@ var sysinitdata = {
    borderColor:"#00CCFF",
    pointBorderColor:"#00CCFF",
    pointBackgroundColor:"#00DDFF",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
   {
@@ -51,7 +51,7 @@ var sysinitdata = {
    borderColor:"#AADD00",
    pointBorderColor:"#AADD00",
    pointBackgroundColor:"#BBEE00",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   }
  ]
@@ -66,7 +66,7 @@ var netinitdata = {
    borderColor:"#F7464A",
    pointBorderColor:"#F7464A",
    pointBackgroundColor:"#FF5A5E",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0]
   },
   {
@@ -75,7 +75,7 @@ var netinitdata = {
    borderColor:"#FFD700",
    pointBorderColor:"#FFD700",
    pointBackgroundColor:"#FFE700",
-   //lineTension:0,
+   lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0]
   }
  ]
@@ -87,7 +87,7 @@ var sysoption={
  scales:{
   yAxes:[{
    ticks:{
-    //max:100,
+    max:100,
     min:0,
     stepSize:10
    }
@@ -100,6 +100,7 @@ var netoption={
  scales:{
   yAxes:[{
    ticks:{
+    max:1,
     min:0
    }
   }]
@@ -183,6 +184,12 @@ function loadFile(fileName){
          lastrx=parseInt(txtdata[13],10)/1000.0;
          netChart.data.datasets[0].data[10]=txdiff;
          netChart.data.datasets[1].data[10]=rxdiff;
+         var netmax=1;
+         for(var i=0;i<11;i++)for(var k=0;k<2;k++){
+           if(netmax<netChart.data.datasets[k].data[i])netmax=netChart.data.datasets[k].data[i];
+         }
+         netmax=(Math.ceil(netmax/10.0))*10;
+         netChart.option.scales.yAxes.ticks.max=netmax;
          netChart.update();
          sysChart.update();
          document.getElementById("time").innerHTML=txtdata[10];
