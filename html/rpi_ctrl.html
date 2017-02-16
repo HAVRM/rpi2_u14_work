@@ -95,9 +95,10 @@ function loadFile(fileName){
       }
    }
 }
-
-//setInterval("loadFile('rpi_data.cgi')",500);
-setInterval("loadFile('rpi_data.txt')",500);
+loadFile('rpi_data.cgi');
+setInterval("loadFile('rpi_data.cgi')",500);
+//loadFile('rpi_data.txt')
+//setInterval("loadFile('rpi_data.txt')",500);
 </script>
 
 <!--<input type="button" value="ファイル読み込み" 
