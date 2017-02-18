@@ -1,0 +1,6 @@
+NOOBS.zip#https://downloads.raspberrypi.org/NOOBS_latest
+ubuntu14.img.zip#http://www.finnie.org/software/raspberrypi/2015-04-06-ubuntu-trusty.zip
+2-ubuntu16.img.xz#http://cdimage.ubuntu.com/ubuntu/releases/16.04/release/ubuntu-16.04-preinstalled-server-armhf+raspi2.img.xz
+3-ubuntu16.img.xz#http://www.finnie.org/software/raspberrypi/ubuntu-rpi3/ubuntu-16.04-preinstalled-server-armhf+raspi3.img.xz
+mate16.img.xz#https://ubuntu-mate.org/raspberry-pi/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz
+raspbian.img.zip#https://downloads.raspberrypi.org/raspbian_latest
