@@ -218,6 +218,7 @@ function loadFile(fileName){
          txtdata=httpObj.responseText.split("_");
          var diff=(parseFloat(txtdata[14])-lasttime)*2;
          diff=Math.round(diff);
+         if(diff<1)diff=1;
          lasttime=parseFloat(txtdata[14]);
          for(var k=0;k<diff && k<10;k++){
            for(var i=0;i<10;i++){
