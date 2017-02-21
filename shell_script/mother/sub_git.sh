@@ -18,6 +18,7 @@ DATA=`date '+%m%d_%H%M_%S'`
 cd ~/rpi2_u14_work
 if [ ${NCOM} = 1 ]
 then
+	git checkout mother
 	if [ ${COM} = "pull" ]
 	then
 		git fetch rpi2_u14_work
@@ -31,5 +32,9 @@ then
 		git commit -m "${DATA}"
 		git push rpi2_u14_work mother
 	fi
+	git checkout master
+	git merge rpi2_u14_work/master
+	git checkout mother
+
 fi
 cd $PLACE
