@@ -219,7 +219,7 @@ function loadFile(fileName){
          var diff=(parseFloat(txtdata[14])-lasttime)*2;
          diff=Math.round(diff);
          lasttime=parseFloat(txtdata[14]);
-         for(var k=0;k<=diff && k<10;k++){
+         for(var k=0;k<diff && k<10;k++){
            for(var i=0;i<10;i++){
              for(var j=0;j<8;j++){
                sysChart.data.datasets[j].data[i]=sysChart.data.datasets[j].data[i+1];
