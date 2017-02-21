@@ -38,21 +38,45 @@ var meminitdata = [
 var cpuinitdata = [
  {
   value: 10,
-  color:"#F7464A",
-  highlight: "#FF5A5E",
+  color:"#EE0000",
+  highlight: "#FF0000",
   label: "user Used"
  },
  {
   value: 10,
-  color:"#FFD700",
-  highlight: "#FFE700",
+  color:"#0000EE",
+  highlight: "#0000FF",
   label: "system Used"
  },
  {
   value: 10,
-  color:"#00CCFF",
-  highlight: "#00DDFF",
+  color:"#FFEE00",
+  highlight: "#FFFF00",
   label: "nice Used"
+ },
+ {
+  value: 10,
+  color: "#FF00EE",
+  highlight: "#FF00FF",
+  label: "I/O waiting"
+ },
+ {
+  value: 10,
+  color: "#00FFEE",
+  highlight: "#00FFFF",
+  label: "hardware interrupt"
+ },
+ {
+  value: 10,
+  color: "#FFEECC",
+  highlight: "#FFFFDD",
+  label: "software interrupt"
+ },
+ {
+  value: 10,
+  color: "#FFCCEE",
+  highlight: "#FFDDFF",
+  label: "steal"
  },
  {
   value: 10,
@@ -78,14 +102,14 @@ function loadFile(fileName){
            memChart.segments[i].value=parseInt(txtdata[i+1],10);
          }
          memChart.update();
-         for (var i=0; i<4; i++){
+         for (var i=0; i<8; i++){
            cpuChart.segments[i].value=parseFloat(txtdata[i+5]);
          }
          cpuChart.update();
          document.getElementById("thermal").innerHTML=txtdata[3];
          document.getElementById("thermalbar").value=parseFloat(txtdata[3]);
-         document.getElementById("cpudata").innerHTML="<br>user,sys,nice,idle,<br>";
-         for (var i=0;i<4;i++){
+         document.getElementById("cpudata").innerHTML="<br>user,sys,nice,I/O,hard,soft,steal,idle,<br>";
+         for (var i=0;i<8;i++){
            document.getElementById("cpudata").innerHTML+=txtdata[i+5]+',';
          }
          document.getElementById("memdata").innerHTML="<br>used,free,(MB)<br>";

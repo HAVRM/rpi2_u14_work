@@ -21,30 +21,70 @@ var sysinitdata = {
   {
    label:"cpu user used %",
    fill:false,
-   backgroundColor:"#FF5A5E",
-   borderColor:"#F7464A",
-   pointBorderColor:"#F7464A",
-   pointBackgroundColor:"#FF5A5E",
+   backgroundColor:"#FF0000",
+   borderColor:"#EE0000",
+   pointBorderColor:"#EE0000",
+   pointBackgroundColor:"#FF0000",
    lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
   {
    label:"cpu system used %",
    fill:false,
-   backgroundColor:"#FFE700",
-   borderColor:"#FFD700",
-   pointBorderColor:"#FFD700",
-   pointBackgroundColor:"#FFE700",
+   backgroundColor:"#0000FF",
+   borderColor:"#0000EE",
+   pointBorderColor:"#0000EE",
+   pointBackgroundColor:"#0000FF",
    lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
   {
    label:"cpu nice used %",
    fill:false,
-   backgroundColor:"#00DDFF",
-   borderColor:"#00CCFF",
-   pointBorderColor:"#00CCFF",
-   pointBackgroundColor:"#00DDFF",
+   backgroundColor:"#FFFF00",
+   borderColor:"#FFEE00",
+   pointBorderColor:"#FFEE00",
+   pointBackgroundColor:"#FFFF00",
+   lineTension:0,
+   data:[0,0,0,0,0,0,0,0,0,0,0],
+  },
+  {
+   label:"cpu I/O waiting %",
+   fill:false,
+   backgroundColor:"#FF00FF",
+   borderColor:"#FF00EE",
+   pointBorderColor:"#FF00EE",
+   pointBackgroundColor:"#FF00FF",
+   lineTension:0,
+   data:[0,0,0,0,0,0,0,0,0,0,0],
+  },
+  {
+   label:"cpu hardware interrupt used %",
+   fill:false,
+   backgroundColor:"#00FFFF",
+   borderColor:"#00FFEE",
+   pointBorderColor:"#00FFEE",
+   pointBackgroundColor:"#00FFFF",
+   lineTension:0,
+   data:[0,0,0,0,0,0,0,0,0,0,0],
+  },
+  {
+   label:"cpu software interrupt used %",
+   fill:false,
+   backgroundColor:"#FFFFDD",
+   borderColor:"#FFEECC",
+   pointBorderColor:"#FFEECC",
+   pointBackgroundColor:"#FFFFDD",
+   lineTension:0,
+   data:[0,0,0,0,0,0,0,0,0,0,0],
+  },
+  {
+   label:"cpu steal %",
+   fill:false,
+   backgroundColor:"#FFDDFF",
+   borderColor:"#FFCCEE",
+   pointBorderColor:"#FFCCEE",
+   pointBackgroundColor:"#FFDDFF",
    lineTension:0,
    data:[0,0,0,0,0,0,0,0,0,0,0],
   },
@@ -146,23 +186,23 @@ function initdate(fileName){
    httpObj.onreadystatechange = function(){
       if ( (httpObj.readyState == 4) && (httpObj.status == 200) ){
          txtdata=httpObj.responseText.split("_");
-         var diff=(parseFloat(txtdata[11])-lasttime)*2;
+         var diff=(parseFloat(txtdata[14])-lasttime)*2;
          diff=Math.round(diff);
-         lasttime=parseFloat(txtdata[11]);
-         lasttx=parseInt(txtdata[12],10);
-         lastrx=parseInt(txtdata[13],10);
-         document.getElementById("time").innerHTML=txtdata[10];
-         var txnum=Math.floor((txtdata[12].length)/3);
-         var rxnum=Math.floor((txtdata[13].length)/3);
-         if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
-         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"&nbsp;kB";
-         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"&nbsp;MB";
-         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"&nbsp;GB";
-         if(rxnum==0)txtdata[13]=txtdata[13]+"&nbsp;B";
-         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"&nbsp;kB";
-         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"&nbsp;MB";
-         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"&nbsp;GB";
-         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13];
+         lasttime=parseFloat(txtdata[14]);
+         lasttx=parseInt(txtdata[15],10);
+         lastrx=parseInt(txtdata[16],10);
+         document.getElementById("time").innerHTML=txtdata[13];
+         var txnum=Math.floor((txtdata[15].length)/3);
+         var rxnum=Math.floor((txtdata[16].length)/3);
+         if(txnum==0)txtdata[15]=txtdata[15]+"&nbsp;B";
+         else if(txnum==1)txtdata[15]=txtdata[15].slice(0,-3)+"&nbsp;kB";
+         else if(txnum==2)txtdata[15]=txtdata[15].slice(0,-6)+"&nbsp;MB";
+         else if(txnum>=3)txtdata[15]=txtdata[15].slice(0,-9)+"&nbsp;GB";
+         if(rxnum==0)txtdata[16]=txtdata[16]+"&nbsp;B";
+         else if(rxnum==1)txtdata[16]=txtdata[16].slice(0,-3)+"&nbsp;kB";
+         else if(rxnum==2)txtdata[16]=txtdata[16].slice(0,-6)+"&nbsp;MB";
+         else if(rxnum>=3)txtdata[16]=txtdata[16].slice(0,-9)+"&nbsp;GB";
+         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[15]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[16];
       }
    }
 }
@@ -176,12 +216,12 @@ function loadFile(fileName){
    httpObj.onreadystatechange = function(){
       if ( (httpObj.readyState == 4) && (httpObj.status == 200) ){
          txtdata=httpObj.responseText.split("_");
-         var diff=(parseFloat(txtdata[11])-lasttime)*2;
+         var diff=(parseFloat(txtdata[14])-lasttime)*2;
          diff=Math.round(diff);
-         lasttime=parseFloat(txtdata[11]);
+         lasttime=parseFloat(txtdata[14]);
          for(var k=0;k<=diff && k<10;k++){
            for(var i=0;i<10;i++){
-             for(var j=0;j<4;j++){
+             for(var j=0;j<8;j++){
                sysChart.data.datasets[j].data[i]=sysChart.data.datasets[j].data[i+1];
              }
              for(var j=0;j<2;j++){
@@ -189,16 +229,16 @@ function loadFile(fileName){
              }
            }
          }
-         for (var i=0; i<3; i++){
+         for (var i=0; i<7; i++){
            sysChart.data.datasets[i].data[10]=parseFloat(txtdata[i+5]);
          }
-         sysChart.data.datasets[3].data[10]=parseInt(txtdata[1],10)*100/(parseInt(txtdata[1],10)+parseInt(txtdata[2],10));
+         sysChart.data.datasets[7].data[10]=parseInt(txtdata[1],10)*100/(parseInt(txtdata[1],10)+parseInt(txtdata[2],10));
          var txdiff=0;
-         if(diff!=0)txdiff=(parseInt(txtdata[12],10)/1000.0-lasttx)*2/diff;
-         lasttx=parseInt(txtdata[12],10)/1000.0;
+         if(diff!=0)txdiff=(parseInt(txtdata[15],10)/1000.0-lasttx)*2/diff;
+         lasttx=parseInt(txtdata[15],10)/1000.0;
          var rxdiff=0;
-         if(diff!=0)rxdiff=(parseInt(txtdata[13],10)/1000.0-lastrx)*2/diff;
-         lastrx=parseInt(txtdata[13],10)/1000.0;
+         if(diff!=0)rxdiff=(parseInt(txtdata[16],10)/1000.0-lastrx)*2/diff;
+         lastrx=parseInt(txtdata[16],10)/1000.0;
          netChart.data.datasets[0].data[10]=txdiff;
          netChart.data.datasets[1].data[10]=rxdiff;
          var netmax=1;
@@ -209,18 +249,18 @@ function loadFile(fileName){
          netChart.data.datasets[2].data[10]=netmax;
          netChart.update();
          sysChart.update();
-         document.getElementById("time").innerHTML=txtdata[10];
-         var txnum=Math.floor((txtdata[12].length-1)/3);
-         var rxnum=Math.floor((txtdata[13].length-1)/3);
-         if(txnum==0)txtdata[12]=txtdata[12]+"&nbsp;B";
-         else if(txnum==1)txtdata[12]=txtdata[12].slice(0,-3)+"."+txtdata[12].slice(-2,-0)+"&nbsp;kB";
-         else if(txnum==2)txtdata[12]=txtdata[12].slice(0,-6)+"."+txtdata[12].slice(-5,-3)+"&nbsp;MB";
-         else if(txnum>=3)txtdata[12]=txtdata[12].slice(0,-9)+"."+txtdata[12].slice(-8,-6)+"&nbsp;GB";
-         if(rxnum==0)txtdata[13]=txtdata[13]+"&nbsp;B";
-         else if(rxnum==1)txtdata[13]=txtdata[13].slice(0,-3)+"."+txtdata[13].slice(-2,-0)+"&nbsp;kB";
-         else if(rxnum==2)txtdata[13]=txtdata[13].slice(0,-6)+"."+txtdata[13].slice(-5,-3)+"&nbsp;MB";
-         else if(rxnum>=3)txtdata[13]=txtdata[13].slice(0,-9)+"."+txtdata[13].slice(-8,-6)+"&nbsp;GB";
-         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[12]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[13];
+         document.getElementById("time").innerHTML=txtdata[13];
+         var txnum=Math.floor((txtdata[15].length-1)/3);
+         var rxnum=Math.floor((txtdata[16].length-1)/3);
+         if(txnum==0)txtdata[15]=txtdata[15]+"&nbsp;B";
+         else if(txnum==1)txtdata[15]=txtdata[15].slice(0,-3)+"."+txtdata[15].slice(-2,-0)+"&nbsp;kB";
+         else if(txnum==2)txtdata[15]=txtdata[15].slice(0,-6)+"."+txtdata[15].slice(-5,-3)+"&nbsp;MB";
+         else if(txnum>=3)txtdata[15]=txtdata[15].slice(0,-9)+"."+txtdata[15].slice(-8,-6)+"&nbsp;GB";
+         if(rxnum==0)txtdata[16]=txtdata[16]+"&nbsp;B";
+         else if(rxnum==1)txtdata[16]=txtdata[16].slice(0,-3)+"."+txtdata[16].slice(-2,-0)+"&nbsp;kB";
+         else if(rxnum==2)txtdata[16]=txtdata[16].slice(0,-6)+"."+txtdata[16].slice(-5,-3)+"&nbsp;MB";
+         else if(rxnum>=3)txtdata[16]=txtdata[16].slice(0,-9)+"."+txtdata[16].slice(-8,-6)+"&nbsp;GB";
+         document.getElementById("netdata").innerHTML="wlan0&nbsp;TXsum:&nbsp;"+txtdata[15]+",<br>wlan0&nbsp;RXsum:&nbsp;"+txtdata[16];
       }
    }
 }
