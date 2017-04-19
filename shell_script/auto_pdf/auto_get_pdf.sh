@@ -66,10 +66,17 @@ do
 			THE="no_file"
 		fi
 		echo ${ADDR} >>result.txt
-		echo ${ADDR}
+		echo -e "${ADDR},\c"
 		if [ ${THE} = ${NAME} ]
 		then
-			wget -O temp_${NAME} ${ADDR} >>result.txt 2>error.txt
+			until wget -O temp_${NAME} ${ADDR} >>result.txt 2>error.txt
+			do
+				WGRE=$?
+				echo -e "${WGRE},\c"
+				echo "${NAME}:${WGRE}" >>error.txt
+				sleep 60s
+			done
+			echo "$?"
 			NOW=$(wc -c ${NAME} | awk '{print $1}')
 			NEW=$(wc -c temp_${NAME} | awk '{print $1}')
 			if [ ${NOW} -ge ${NEW} ]
@@ -87,7 +94,14 @@ do
 				. dropbox_uploader.sh upload ${NAME} ${NAME} >>result.txt 2>error.txt &
 			fi
 		else
-			wget -O ${NAME} ${ADDR} >>result.txt 2>error.txt
+			until wget -O ${NAME} ${ADDR} >>result.txt 2>error.txt
+			do
+				WGRE=$?
+				echo -e "${WGRE},\c"
+				echo "${NAME}:${WGRE}" >>error.txt
+				sleep 60s
+			done
+			echo "$?"
 			if [ $REN = 0 ]
 			then
 				. write_little_endian.sh new_pdf.txt
